@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
     <div class="calculator">
@@ -80,8 +82,12 @@
         currentInput = currentInput.slice(0, -1) || "0";
       } else if (value === "Escape") {
         currentInput = "0";
+        history = [];
+        historyList.innerHTML = "";
       } else if (value === "Delete") {
         currentInput = "0";
+        history = [];
+        historyList.innerHTML = "";
       } else if (value === "Enter" || value === "=") {
         try {
           const expression = currentInput.replace(/×/g, "*").replace(/÷/g, "/");
@@ -106,6 +112,8 @@
           currentInput = currentInput.slice(0, -1) || "0";
         } else if (btn.classList.contains("all-clear")) {
           currentInput = "0";
+          history = [];                      // Clear the history array
+          historyList.innerHTML = "";        // Remove all history list items
         } else if (btn.classList.contains("equal")) {
           try {
             const expression = currentInput.replace(/×/g, "*").replace(/÷/g, "/");
@@ -159,4 +167,5 @@
     updateDisplay();
   </script>
 </body>
+
 </html>
